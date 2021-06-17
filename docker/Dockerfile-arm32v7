@@ -37,4 +37,4 @@ COPY --from=builder /opt/gateway-config/ /opt/gateway-config/
 RUN cp /opt/gateway-config/config/com.helium.Config.conf /etc/dbus-1/system.d/com.helium.Config.conf
 
 # Define default process to execute for the container
-CMD ["/opt/gateway-config/bin/gateway_config"]
+CMD ["/opt/gateway-config/bin/gateway_config", "foreground"]
