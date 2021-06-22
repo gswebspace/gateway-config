@@ -26,7 +26,8 @@ FROM erlang:23-slim
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
     libdbus-1-3
-#RUN apt-get install -y dbus bluez conman
+RUN apt-get install -y dbus inetutils-ping
+#RUN apt-get install -y dbus bluez connman
 
 # Prepare installation directory
 WORKDIR /opt/gateway-config

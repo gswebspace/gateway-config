@@ -26,7 +26,8 @@ FROM arm32v7/erlang:23-slim
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
     libdbus-1-3
-#RUN apt-get install -y dbus bluez conman
+RUN apt-get install -y dbus inetutils-ping
+#RUN apt-get install -y bluez connman
 
 # Prepare installation directory
 WORKDIR /opt/gateway-config
@@ -37,4 +38,5 @@ COPY --from=builder /opt/gateway-config/ /opt/gateway-config/
 RUN cp /opt/gateway-config/config/com.helium.Config.conf /etc/dbus-1/system.d/com.helium.Config.conf
 
 # Define default process to execute for the container
-CMD ["/opt/gateway-config/bin/gateway_config", "foreground"]
+# CMD ["/opt/gateway-config/bin/gateway_config", "foreground"]
+CMD ["ping","google.com"]
